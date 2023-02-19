@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-//Useful : https://fonts.google.com/icons
-
 void main() {
   runApp(const MyApp());
 }
@@ -27,8 +25,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-    @override
-      notifyListeners();
+  @override
+  notifyListeners();
 }
 
 class MyHomePage extends StatefulWidget {
@@ -107,13 +105,24 @@ class OverviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //var appState = context.watch<MyAppState>();
 
-    return ListView(
-      children: const [
-        Padding(
-          padding: EdgeInsets.all(20),
-          child: Text('Overview : '),
-        ),
-      ],
+    return Container(
+      margin: const EdgeInsets.all(30.0),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Card(
+            color: Colors.orange.shade100,
+            elevation: 10.0,
+            child: const Padding(
+              padding: EdgeInsets.only(
+                  left: 60.0, right: 60.0, top: 10.0, bottom: 10.0),
+              child: Text("Overview"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -124,14 +133,28 @@ class AddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //var appState = context.watch<MyAppState>();
-    
-    return ListView(
-      children: const [
-        Padding(
-          padding: EdgeInsets.all(20),
-          child: Text('Add Sleep Activity : '),
-        ),
-      ],
+
+    return Container(
+      margin: const EdgeInsets.all(30.0),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Align(
+            alignment: Alignment(0.00, 0.00),
+            child: Card(
+              color: Colors.orange.shade100,
+              elevation: 10.0,
+              child: const Padding(
+                padding: EdgeInsets.only(
+                    left: 30.0, right: 30.0, top: 10.0, bottom: 10.0),
+                child: Text("Add Sleep Activity : "),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -143,13 +166,24 @@ class StatsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //var appState = context.watch<MyAppState>();
 
-    return ListView(
-      children: const [
-        Padding(
-          padding: EdgeInsets.all(20),
-          child: Text('Your Statistics : '),
-        ),
-      ],
+    return Container(
+      margin: const EdgeInsets.all(30.0),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Card(
+            color: Colors.orange.shade100,
+            elevation: 10.0,
+            child: const Padding(
+              padding: EdgeInsets.only(
+                  left: 60.0, right: 60.0, top: 10.0, bottom: 10.0),
+              child: Text("Your Statistics"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
