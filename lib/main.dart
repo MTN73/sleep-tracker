@@ -127,8 +127,17 @@ class OverviewPage extends StatelessWidget {
   }
 }
 
-class AddPage extends StatelessWidget {
+class AddPage extends StatefulWidget {
   const AddPage({super.key});
+
+  @override
+  State<AddPage> createState() => _AddPageState();
+}
+
+class _AddPageState extends State<AddPage> {
+  TimeOfDay bed = const TimeOfDay(hour: 22, minute: 30);
+  TimeOfDay wake = const TimeOfDay(hour: 6, minute: 30);
+  int hoursOfSleep = 8;
 
   @override
   Widget build(BuildContext context) {
@@ -141,10 +150,9 @@ class AddPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Align(
-            alignment: Alignment(0.00, 0.00),
+          Center(
             child: Card(
-              color: Colors.orange.shade100,
+              color: Colors.orange.shade200,
               elevation: 10.0,
               child: const Padding(
                 padding: EdgeInsets.only(
@@ -153,6 +161,69 @@ class AddPage extends StatelessWidget {
               ),
             ),
           ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 10.0,
+                color: Colors.pink.shade50,
+                child : Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Went to bed at : ${bed.hour}:${bed.minute}"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                    child: const Text("Choose time"),
+                    onPressed: () async {
+                      TimeOfDay? newTime = await showTimePicker(
+                        context: context,
+                        initialTime: bed,
+                      );
+                      if (newTime == null) return;
+                      setState(() => bed = newTime);
+                    },
+                                ),
+                  ),
+                ],
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 10.0,
+                color: Colors.pink.shade50,
+                child : Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Woke up at : ${wake.hour}:${wake.minute}"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                    child: const Text("Choose time"),
+                    onPressed: () async {
+                      TimeOfDay? newTime = await showTimePicker(
+                        context: context,
+                        initialTime: wake,
+                      );
+                      if (newTime == null) return;
+                      setState(() => wake = newTime);
+                    },
+                                ),
+                  ),
+                ],
+                ),
+              ),
+            ),
+          ),
+          Center(child: Text("Hours of sleep : $hoursOfSleep")),
         ],
       ),
     );
